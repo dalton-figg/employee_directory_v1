@@ -27,18 +27,18 @@
   padding: 1.5rem;
 }
 
-.card-image {
+.card__image {
   border-radius: 50%;
 }
 
-.card-title {
-  color: var(--clr-neutral-100);
-  font-size: 1.25rem;
-}
-
-.card-content {
+.card__content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   color: rgb(128, 128, 128);
+}
+
+.card__title {
+  color: var(--clr-neutral-100);
+  font-size: 1.25rem;
 }

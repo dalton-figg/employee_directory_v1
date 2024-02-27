@@ -22,10 +22,10 @@ const populatePage = (data) => {
 const generateCard = (user) => {
   return `<div class="card">
   <div>
-      <img src="${user.picture.large}" width="128" height="128" alt="Employee image" class="card-image">
+      <img src="${user.picture.large}" width="128" height="128" alt="Employee image" class="card__image">
   </div>
-  <div class="card-content">
-      <h2 class="card-title">${user.name.first} ${user.name.last}</h2>
+  <div class="card__details">
+      <h2 class="card__title">${user.name.first} ${user.name.last}</h2>
       <p>${user.email}</p>
       <p>${user.location.state}</p>
   </div>

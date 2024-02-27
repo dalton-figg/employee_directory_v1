@@ -20,9 +20,11 @@ const getUserData = async () => {
 
 const populatePage = (userData) => {
   grid.innerHTML = '';
-  userData.forEach(
-    (user, index) => (grid.innerHTML += generateCard(user, index))
-  );
+  userData.forEach(user => {
+    // Find the index of the user in the original usersData array
+    const originalIndex = usersData.indexOf(user);
+    grid.innerHTML += generateCard(user, originalIndex);
+  });
 };
 
 const generateCard = (user, index) => {
@@ -70,6 +72,8 @@ modalContainer.addEventListener('click', (e) => {
 });
 
 const createModal = (userIndex) => {
+  console.log(userIndex);
+
   // Get user data from the array based on the index
   const { picture, name, email, location, cell, dob } = usersData[userIndex];
   const { large } = picture;

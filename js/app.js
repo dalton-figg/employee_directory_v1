@@ -20,7 +20,7 @@ const getUserData = async () => {
 
 const populatePage = (userData) => {
   grid.innerHTML = '';
-  userData.forEach(user => {
+  userData.forEach((user) => {
     // Find the index of the user in the original usersData array
     const originalIndex = usersData.indexOf(user);
     grid.innerHTML += generateCard(user, originalIndex);

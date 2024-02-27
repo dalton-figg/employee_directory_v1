@@ -69,7 +69,6 @@ modalContainer.addEventListener('click', (e) => {
 });
 
 const createModal = (userIndex) => {
-  console.log(userIndex);
   // Get user data from the array based on the index
   const { picture, name, email, location, cell, dob } = usersData[userIndex];
   const { large } = picture;
@@ -110,11 +109,14 @@ const createModal = (userIndex) => {
 
 // Function to navigate between users
 const navigateUser = (currentIndex, direction) => {
+  // Ensure parse int otherwise string concat
   let newIndex = parseInt(currentIndex) + direction;
 
-  // Deal with overflow both sides
+  // Handle overflowing both sides
 
-  newIndex = newIndex < 0 ? usersData.length - 1 : 0;
+  if (newIndex === usersData.length) newIndex = 0;
+
+  if (newIndex === -1) newIndex = usersData.length - 1;
 
   createModal(newIndex);
 };

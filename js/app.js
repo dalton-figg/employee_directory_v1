@@ -19,6 +19,7 @@ const getUserData = async () => {
 };
 
 const populatePage = (userData) => {
+  grid.innerHTML = '';
   userData.forEach(
     (user, index) => (grid.innerHTML += generateCard(user, index))
   );
@@ -125,6 +126,21 @@ const removeModal = () => {
   modalContainer.style.display = 'none';
   modal.innerHTML = '';
 };
+
+// Search
+
+const searchBar = document.getElementById('search');
+
+searchBar.addEventListener('keyup', (e) => {
+  const searchedUser = e.target.value.toLowerCase();
+
+  let newData = usersData.filter((user) => {
+    let username = `${user.name.first} ${user.name.last}`.toLowerCase();
+    return username.includes(searchedUser);
+  });
+
+  populatePage(newData);
+});
 
 // Function to fetch user data
 getUserData();

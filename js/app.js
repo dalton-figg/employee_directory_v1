@@ -7,6 +7,7 @@ let usersData;
 
 const getUserData = async () => {
   try {
+    // request a random user nationality that will only return data in the English alphabet using &nat search query
     const response = await fetch(
       `${endpointURL}?results=${users}&nat=gb,us,ca,nz`
     );

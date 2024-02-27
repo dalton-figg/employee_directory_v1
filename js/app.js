@@ -94,7 +94,7 @@ const createModal = (userIndex) => {
       <p>${state}</p>
       <hr class="user-modal__divider">
       <p>${cell}</p>  
-      <p>${number} ${streetName} ${city}, ${postcode} </p>  
+      <p>${number} ${streetName}, ${city} ${state}, ${postcode} </p>  
       <p>Birthday: ${userBday.getDate()}/${
     userBday.getMonth() + 1
   }/${userBday.getFullYear()}</p>

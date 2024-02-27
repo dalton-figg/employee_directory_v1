@@ -58,10 +58,17 @@ grid.addEventListener('click', (e) => {
   }
 });
 
+modalContainer.addEventListener('click', (e) => {
+  const target = e.target;
+
+  if (target.className === 'user-modal-container') removeModal();
+});
+
 // Function to create modal
 const createModal = (userIndex) => {
   // Get user data from the array based on the index
   const user = usersData[userIndex];
+  const userBday = new Date(user.dob.date);
   // Set modal container display to grid
   modalContainer.style.display = 'grid';
   // Populate modal HTML with user data
@@ -71,10 +78,15 @@ const createModal = (userIndex) => {
     <p>${user.email}</p>
     <p>${user.location.state}</p>
     <hr>
-    <p>${user.phone}</p>  
-    <p>${user.location.street.number} ${user.location.street.name} ${user.location.postcode}</p>  
-    <p>Birthday: ${user.dob.date}</p>  
+    <p>${user.cell}</p>  
+    <p>${user.location.street.number} ${user.location.street.name}, ${user.location.postcode}, ${user.location.city} ${user.location.state} </p>  
+    <p>Birthday: ${userBday.getDate()}/${userBday.getMonth() + 1}/${userBday.getFullYear()}</p>  
   `;
+};
+
+const removeModal = () => {
+  modalContainer.style.display = 'none';
+  modal.innerHTML = '';
 };
 
 // Function to fetch user data

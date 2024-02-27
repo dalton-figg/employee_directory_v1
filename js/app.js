@@ -66,23 +66,30 @@ modalContainer.addEventListener('click', (e) => {
 
 // Function to create modal
 const createModal = (userIndex) => {
-  // Get user data from the array based on the index
-  const user = usersData[userIndex];
-  const userBday = new Date(user.dob.date);
-  // Set modal container display to grid
-  modalContainer.style.display = 'grid';
-  // Populate modal HTML with user data
-  modal.innerHTML = `
-    <img src="${user.picture.large}" width="128" height="128" alt="Employee image" class="card__image">
-    <h2 class="card__title">${user.name.first} ${user.name.last}</h2>
-    <p>${user.email}</p>
-    <p>${user.location.state}</p>
-    <hr>
-    <p>${user.cell}</p>  
-    <p>${user.location.street.number} ${user.location.street.name}, ${user.location.postcode}, ${user.location.city} ${user.location.state} </p>  
-    <p>Birthday: ${userBday.getDate()}/${userBday.getMonth() + 1}/${userBday.getFullYear()}</p>  
-  `;
-};
+    // Get user data from the array based on the index
+    const { picture, name, email, location, cell, dob } = usersData[userIndex];
+    const { large } = picture;
+    const { first, last } = name;
+    const { state, street, postcode, city } = location;
+    const { number, name: streetName } = street;
+    const userBday = new Date(dob.date);
+    
+    // Set modal container display to grid
+    modalContainer.style.display = 'grid';
+    
+    // Populate modal HTML with user data
+    modal.innerHTML = `
+      <img src="${large}" width="128" height="128" alt="Employee image" class="card__image">
+      <h2 class="card__title">${first} ${last}</h2>
+      <p>${email}</p>
+      <p>${state}</p>
+      <hr>
+      <p>${cell}</p>  
+      <p>${number} ${streetName}, ${postcode}, ${city} ${state}</p>  
+      <p>Birthday: ${userBday.getDate()}/${userBday.getMonth() + 1}/${userBday.getFullYear()}</p>  
+    `;
+  };
+  
 
 const removeModal = () => {
   modalContainer.style.display = 'none';

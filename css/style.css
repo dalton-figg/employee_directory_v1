@@ -27,6 +27,11 @@
   padding: 1.5rem;
 }
 
+.card:where(:hover, :focus) {
+  cursor: pointer;
+  border-color: var(--clr-neutral-100);
+}
+
 .card__image {
   border-radius: 50%;
 }
@@ -41,4 +46,25 @@
 .card__title {
   color: var(--clr-neutral-100);
   font-size: 1.25rem;
+}
+
+.user-modal-container {
+  display: none;
+  place-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.user-modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--clr-neutral-999);
+  color: rgb(128, 128, 128);
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 0.5rem;
+  padding: 3rem;
 }

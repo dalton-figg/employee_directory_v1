@@ -69,6 +69,7 @@ modalContainer.addEventListener('click', (e) => {
 });
 
 const createModal = (userIndex) => {
+  console.log(userIndex);
   // Get user data from the array based on the index
   const { picture, name, email, location, cell, dob } = usersData[userIndex];
   const { large } = picture;
@@ -97,7 +98,7 @@ const createModal = (userIndex) => {
         <button id="prev-user" class="user-modal__navigation-button">Previous</button>
         <button id="next-user" class="user-modal__navigation-button">Next</button>
       </div>
-    `
+    `;
 
   // Event listeners for navigation buttons
   const prevButton = document.getElementById('prev-user');
@@ -109,12 +110,12 @@ const createModal = (userIndex) => {
 
 // Function to navigate between users
 const navigateUser = (currentIndex, direction) => {
-  let newIndex = currentIndex + direction;
-  if (newIndex < 0) {
-    newIndex = usersData.length - 1;
-  } else if (newIndex >= usersData.length) {
-    newIndex = 0;
-  }
+  let newIndex = parseInt(currentIndex) + direction;
+
+  // Deal with overflow both sides
+
+  newIndex = newIndex < 0 ? usersData.length - 1 : 0;
+
   createModal(newIndex);
 };
 

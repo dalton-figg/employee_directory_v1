@@ -76,6 +76,10 @@ select {
   font: inherit;
 }
 
+hr {
+  width: 100%;
+}
+
 /* Add smooth scrolling on all elements with a target (including nested scrollbars) if a user has not selected prefers-reduced-motion */
 
 @media only screen and (prefers-reduced-motion: no-preference) {

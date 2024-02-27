@@ -61,7 +61,7 @@ grid.addEventListener('click', (e) => {
 modalContainer.addEventListener('click', (e) => {
   const target = e.target;
 
-  if (target.className === 'user-modal-container') removeModal();
+  if (target.className === 'user-modal-container' || target.className === 'user-modal__close') removeModal();
 });
 
 // Function to create modal
@@ -79,13 +79,14 @@ const createModal = (userIndex) => {
     
     // Populate modal HTML with user data
     modal.innerHTML = `
-      <img src="${large}" width="128" height="128" alt="Employee image" class="card__image">
-      <h2 class="card__title">${first} ${last}</h2>
+      <p class="user-modal__close">X</p>
+      <img src="${large}" width="128" height="128" alt="Employee image" class="user-modal__image">
+      <h2 class="user-modal__title">${first} ${last}</h2>
       <p>${email}</p>
       <p>${state}</p>
-      <hr>
+      <hr class="user-modal__divider">
       <p>${cell}</p>  
-      <p>${number} ${streetName}, ${postcode}, ${city} ${state}</p>  
+      <p>${number} ${streetName} ${city}, ${postcode} </p>  
       <p>Birthday: ${userBday.getDate()}/${userBday.getMonth() + 1}/${userBday.getFullYear()}</p>  
     `;
   };

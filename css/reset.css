@@ -1,0 +1,85 @@
+/* Set up commonly used custom properties */
+
+:root {
+  --clr-neutral-999: hsl(255, 100%, 100%);
+  --clr-neutral-100: hsl(0, 0%, 0%);
+
+  --fontstack-system-sans: ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --fontstack-system-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+    serif;
+  --fontstack-system-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Use a better box-sizing model [1] */
+/* Remove default padding and margin in all browsers [2] */
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* [1] */
+  padding: 0; /* [2] */
+  margin: 0;
+}
+
+/* Add an option for dark mode user-agent styles [1] */
+/* Improve text rendering on MacOS [2] */
+
+html {
+  color-scheme: dark light; /* [1] */
+  -webkit-font-smoothing: antialiased; /* [2] */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Increase line-height in all browsers to match accessibility standards */
+
+body {
+  background: rgb(231, 231, 231);
+  font-family: var(--fontstack-system-sans);
+  line-height: 1.5;
+}
+
+/* Balances multi-line headings to prevent orphans */
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+
+/* Sets all paragraphs to have a comfortable reading width (based on the font size) [1] */
+/* Balances multiline paragraphs to avoid orphans [2]  */
+
+p {
+  max-width: 75ch; /* [1] */
+  text-wrap: pretty; /* [2] */
+}
+
+/* Remove whitespace from images being treated as an inline element, ensures media content only get as big as their container (making them responsive) [1] */
+/* Ensures any alt text is distinguishable from the rest of the content [2] */
+
+img,
+video,
+picture,
+canvas,
+svg {
+  display: block; /* [1] */
+  max-width: 100%;
+  font-style: italic; /* [2] */
+}
+
+/* Change font styles in all browsers */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Add smooth scrolling on all elements with a target (including nested scrollbars) if a user has not selected prefers-reduced-motion */
+
+@media only screen and (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+  }
+}

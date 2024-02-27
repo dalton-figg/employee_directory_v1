@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  gap: 2rem;
+  width: min(1440px, calc(100% - 5rem));
+  margin: 0 auto;
+  padding-block: 5rem;
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 128px auto;
+  align-items: center;
+  gap: 1rem;
+  background: var(--clr-neutral-999);
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.card-image {
+  border-radius: 50%;
+}
+
+.card-title {
+  color: var(--clr-neutral-100);
+  font-size: 1.25rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: rgb(128, 128, 128);
+}

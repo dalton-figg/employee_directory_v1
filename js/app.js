@@ -61,24 +61,27 @@ grid.addEventListener('click', (e) => {
 modalContainer.addEventListener('click', (e) => {
   const target = e.target;
 
-  if (target.className === 'user-modal-container' || target.className === 'user-modal__close') removeModal();
+  if (
+    target.className === 'user-modal-container' ||
+    target.className === 'user-modal__close'
+  )
+    removeModal();
 });
 
-// Function to create modal
 const createModal = (userIndex) => {
-    // Get user data from the array based on the index
-    const { picture, name, email, location, cell, dob } = usersData[userIndex];
-    const { large } = picture;
-    const { first, last } = name;
-    const { state, street, postcode, city } = location;
-    const { number, name: streetName } = street;
-    const userBday = new Date(dob.date);
-    
-    // Set modal container display to grid
-    modalContainer.style.display = 'grid';
-    
-    // Populate modal HTML with user data
-    modal.innerHTML = `
+  // Get user data from the array based on the index
+  const { picture, name, email, location, cell, dob } = usersData[userIndex];
+  const { large } = picture;
+  const { first, last } = name;
+  const { state, street, postcode, city } = location;
+  const { number, name: streetName } = street;
+  const userBday = new Date(dob.date);
+
+  // Set modal container display to grid
+  modalContainer.style.display = 'grid';
+
+  // Populate modal HTML with user data
+  modal.innerHTML = `
       <p class="user-modal__close">X</p>
       <img src="${large}" width="128" height="128" alt="Employee image" class="user-modal__image">
       <h2 class="user-modal__title">${first} ${last}</h2>
@@ -87,10 +90,33 @@ const createModal = (userIndex) => {
       <hr class="user-modal__divider">
       <p>${cell}</p>  
       <p>${number} ${streetName} ${city}, ${postcode} </p>  
-      <p>Birthday: ${userBday.getDate()}/${userBday.getMonth() + 1}/${userBday.getFullYear()}</p>  
-    `;
-  };
-  
+      <p>Birthday: ${userBday.getDate()}/${
+    userBday.getMonth() + 1
+  }/${userBday.getFullYear()}</p>
+      <div class="user-modal__navigation">
+        <button id="prev-user" class="user-modal__navigation-button">Previous</button>
+        <button id="next-user" class="user-modal__navigation-button">Next</button>
+      </div>
+    `
+
+  // Event listeners for navigation buttons
+  const prevButton = document.getElementById('prev-user');
+  const nextButton = document.getElementById('next-user');
+
+  prevButton.addEventListener('click', () => navigateUser(userIndex, -1));
+  nextButton.addEventListener('click', () => navigateUser(userIndex, 1));
+};
+
+// Function to navigate between users
+const navigateUser = (currentIndex, direction) => {
+  let newIndex = currentIndex + direction;
+  if (newIndex < 0) {
+    newIndex = usersData.length - 1;
+  } else if (newIndex >= usersData.length) {
+    newIndex = 0;
+  }
+  createModal(newIndex);
+};
 
 const removeModal = () => {
   modalContainer.style.display = 'none';
